@@ -73,3 +73,5 @@ for i in temp_str:
                             print("    ", str_dict[x][j])
             else:
                 pass
+        if len(opted) == 0:
+           handle_error()
