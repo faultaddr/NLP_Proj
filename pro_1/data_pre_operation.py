@@ -1,3 +1,4 @@
+import sys
 def get_dict():
     fp = open("./data/data.txt", 'r', encoding="utf-8")
     str_list = []
