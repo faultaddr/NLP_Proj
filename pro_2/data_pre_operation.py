@@ -1,7 +1,7 @@
 def get_dict():
     max_len = 0
     str_list = []
-    fp = open("./data/data.txt", 'r',encoding="gbk")
+    fp = open(r"./data/data.txt", 'r',encoding="gbk")
     for line in fp.readlines():
         str_list.append(line.split("\n")[0].split(","))
     str_dic = {}
