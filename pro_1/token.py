@@ -1,6 +1,6 @@
 from __future__ import print_function
-from pro_1.data_pre_operation import get_dict
-
+from  data_pre_operation import get_dict
+import sys
 
 class EnWord:
 
@@ -47,34 +47,40 @@ class EnWord:
 
     def main(self):
         str_dict = get_dict()
+        input_str=sys.argv[1]
         print("---------------****** 英语字典 ******---------------")
         print("本软件最终解释权归种菜的小朋友所有 @copyright")
-        print("please input what you what to know:  ")
-        input_str = input()
-        temp_str = input_str.split()
-        for i in temp_str:
-            if str_dict.get(i) is not None:
-                print(i, "  查询结果如下所示：----****----")
-                for j in range(len(str_dict[i])):
-                    if j % 2 == 0:
-                        print("  ", str_dict[i][j])
-                    else:
-                        print("    ", str_dict[i][j])
-            else:
-                opted = self.opt_rules(i)
-                for x in opted:
-                    if x != "":
-                        if str_dict.get(x) is not None:
-                            print(x, "  查询结果如下所示：----****----")
-                            for j in range(len(str_dict[x])):
-                                if j % 2 == 0:
-                                    print("  ", str_dict[x][j])
-                                else:
-                                    print("    ", str_dict[x][j])
-                    else:
-                        pass
-                if len(opted) == 0:
-                    self.handle_error()
+        while(1):
+            print("你想查询的英文单词为:  ",input_str,"\n")
+            print("还原的英文单词为:")
+            temp_str = input_str.split()
+            for i in temp_str:
+                if str_dict.get(i) is not None:
+                    print(i, "  查询结果如下所示：----****----")
+                    for j in range(len(str_dict[i])):
+                        if j % 2 == 0:
+                            print("  ", str_dict[i][j])
+                        else:
+                            print("    ", str_dict[i][j])
+                else:
+                    opted = self.opt_rules(i)
+                    for x in opted:
+                        if x != "":
+                            if str_dict.get(x) is not None:
+                                print(x, "  查询结果如下所示：----****----")
+                                for j in range(len(str_dict[x])):
+                                    if j % 2 == 0:
+                                        print("  ", str_dict[x][j])
+                                    else:
+                                        print("    ", str_dict[x][j])
+                        else:
+                            pass
+                    if len(opted) == 0:
+                        self.handle_error()
+            print("如果需要继续查询请直接输入 否则请按e|E退出")
+            input_str=input()
+            if input_str=="e"  or input_str=="E":
+                sys.exit(0)
 
 
 if __name__ == "__main__":
